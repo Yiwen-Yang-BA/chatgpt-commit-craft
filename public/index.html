@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="粘贴代码差异，快速理解改动范围，生成规范的提交说明。选择、调整，再带回你的工作流。"
+    />
+    <title>Commit Craft · AI 小工具</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand"><span class="logo">C</span>Commit Craft</div>
+        <div class="side-intro">
+          <div class="eyebrow">PERSONAL AI WORKSPACE</div>
+          <div class="nav-item">代码变更说明</div>
+        </div>
+        <div class="side-note">
+          把一个想法，变成可以使用的结果。<br />轻量、专注，按你的节奏。
+        </div>
+        <div class="side-bottom">
+          <div class="eyebrow">CONNECTION</div>
+          <label
+            ><span class="sr-only" hidden>运行模式</span
+            ><select id="mode" aria-label="运行模式"></select
+          ></label>
+        </div>
+        <div class="side-footer">
+          INDEPENDENT EDITION / 09<br />Built for a little more clarity.
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <span class="crumb">我的工作台 &nbsp; / &nbsp; 代码变更说明</span
+          ><span class="top-meta"
+            ><i class="dot"></i><span id="connection">正在连接…</span></span
+          >
+        </header>
+        <section class="hero">
+          <div class="eyebrow">SMALL COMMITS. CLEAR INTENT.</div>
+          <h1>让每次改动，有迹可循。</h1>
+          <p class="description">
+            粘贴代码差异，快速理解改动范围，生成规范的提交说明。选择、调整，再带回你的工作流。
+          </p>
+        </section>
+        <section class="workspace">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>变更内容</h2>
+              <button id="sample" class="small">载入示例</button>
+            </div>
+            <form id="commit-form">
+              <label
+                >Git diff<textarea
+                  id="diff"
+                  rows="18"
+                  required
+                  maxlength="60000"
+                  spellcheck="false"
+                  placeholder="diff --git a/src/app.js b/src/app.js
+…"
+                ></textarea></label
+              ><input
+                type="file"
+                id="file"
+                accept=".diff,.patch"
+                aria-label="导入 diff 或 patch"
+              />
+              <div class="grid2">
+                <label
+                  >提交语言<select id="language">
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                  </select></label
+                ><label
+                  >Scope · 可选<input
+                    id="scope"
+                    maxlength="30"
+                    placeholder="例如 auth、ui、api"
+                /></label>
+              </div>
+              <p class="hint">
+                只处理粘贴的变更；真实模式会发送经过常见模式脱敏的
+                diff。请先检查输入是否含有敏感内容。
+              </p>
+              <button id="generate" class="primary">生成提交说明 ↗</button>
+            </form>
+            <div class="divider"></div>
+            <div class="panel-head">
+              <h2>改动概览</h2>
+              <span id="stats" class="number">WAITING FOR DIFF</span>
+            </div>
+            <div id="files" class="stack">
+              <p class="muted">生成后显示本次输入中的文件与增删行数。</p>
+            </div>
+            <div id="warnings" class="hint"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
+              <h2>选择一个起点</h2>
+              <span class="number">01 → 03</span>
+            </div>
+            <div id="meta" class="meta"></div>
+            <div id="candidates" class="stack">
+              <div class="empty">
+                <div class="symbol">↗</div>
+                <h3>清楚写下，为什么改</h3>
+                <p>候选说明生成后，可在这里检查与调整。</p>
+              </div>
+            </div>
+            <div id="editor" hidden>
+              <div class="divider"></div>
+              <div class="panel-head">
+                <h2>最终提交说明</h2>
+                <span id="subject-count" class="number"></span>
+              </div>
+              <label
+                >标题<input
+                  id="subject"
+                  maxlength="150"
+                  spellcheck="false" /></label
+              ><label
+                >正文<textarea id="body" rows="7" maxlength="6000"></textarea>
+              </label>
+              <p id="validation" class="hint"></p>
+              <div class="toolbar">
+                <button id="copy" class="primary">复制说明</button
+                ><button id="download" class="small">导出 TXT</button
+                ><button id="export-report" class="small">导出变更摘要</button>
+              </div>
+            </div>
+          </section>
+        </section>
+        <footer class="footer">
+          <span>Commit Craft · 独立轻量实现</span
+          ><span
+            >灵感来自
+            <a
+              href="https://github.com/Nutlope/aicommits"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Nutlope/aicommits</a
+            >
+            &nbsp; / &nbsp; 09 OF 10</span
+          >
+        </footer>
+      </main>
+    </div>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

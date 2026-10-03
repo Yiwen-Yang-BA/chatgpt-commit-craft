@@ -1,0 +1,32 @@
+{
+  "id": "chatgpt-commit-craft",
+  "title": "Commit Craft",
+  "number": 9,
+  "port": 3109,
+  "symbol": "C",
+  "nav": "代码变更说明",
+  "eyebrow": "SMALL COMMITS. CLEAR INTENT.",
+  "headline": "让每次改动，有迹可循。",
+  "description": "粘贴代码差异，快速理解改动范围，生成规范的提交说明。选择、调整，再带回你的工作流。",
+  "features": [
+    "解析 Git diff，显示文件变化与增删行数",
+    "生成 3 个 Conventional Commits 候选，支持中英文与自定义 scope",
+    "提交说明可编辑、复制与导出",
+    "常见密钥样式脱敏，提交前人工检查提示"
+  ],
+  "steps": [
+    "粘贴 git diff 输出，或导入 .diff / .patch 文件。",
+    "选择说明语言，填写可选的 scope，点击生成。",
+    "检查文件统计和脱敏提示，选择候选并编辑标题与正文。",
+    "复制或导出 commit-message.txt；本工具不会执行 Git 命令或提交代码。"
+  ],
+  "source": {
+    "name": "Nutlope/aicommits",
+    "url": "https://github.com/Nutlope/aicommits",
+    "stars": 9104,
+    "pushed": "2026-09-05",
+    "license": "MIT"
+  },
+  "scope": "复刻 aicommits 的 diff → 提交信息核心用途，采用独立网页交互。不会读取本机 Git 仓库、安装 hook 或执行提交。支持标准 Git unified diff；统计基于提供的文本，不代表完整仓库状态。常见密钥模式的脱敏不是完整的秘密扫描，请在发送真实模型前自行检查输入。",
+  "storage": "输入 diff 和输出只保留在当前页面，不存入浏览器本地；生成结果可导出。"
+}
